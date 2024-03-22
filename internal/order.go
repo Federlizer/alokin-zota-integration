@@ -6,10 +6,19 @@ import (
 	"github.com/google/uuid"
 )
 
+type PaymentStatus string
+
+const (
+	PaymentStatusPending  PaymentStatus = "PENDING"
+	PaymentStatusApproved               = "APPROVED"
+	PaymentStatusFailed                 = "FAILED"
+)
+
 type Order struct {
-	Id     uuid.UUID
-	Amount float64
-	User   User
+	Id            uuid.UUID
+	Amount        float64
+	User          User
+	PaymentStatus PaymentStatus
 }
 
 func (o *Order) AmountStr() string {

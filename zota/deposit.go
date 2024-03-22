@@ -4,7 +4,7 @@ import (
 	"crypto/sha256"
 	"fmt"
 
-    "github.com/federlizer/alokin-zota-integration/internal"
+	"github.com/federlizer/alokin-zota-integration/internal"
 )
 
 var DEPOSIT_ENDPOINT = ""
@@ -38,8 +38,8 @@ type ZotaDepositRequest struct {
 // and secretKey passed. This function automatically generates a signature for the request
 // and assigns it to the ZotaDepositRequest returned.
 func FromOrder(order *internal.Order, endpointId, secretKey string) *ZotaDepositRequest {
-    // Create request body
-    zdr := ZotaDepositRequest{
+	// Create request body
+	zdr := ZotaDepositRequest{
 		MerchantOrderID:   order.Id.String(),
 		MerchantOrderDesc: "Test deposit",
 		OrderAmount:       order.AmountStr(),
@@ -61,11 +61,11 @@ func FromOrder(order *internal.Order, endpointId, secretKey string) *ZotaDeposit
 		Signature:   "",
 	}
 
-    // Generate request signature
-    signature := zdr.GenSignature(endpointId, secretKey)
-    zdr.Signature = signature
+	// Generate request signature
+	signature := zdr.GenSignature(endpointId, secretKey)
+	zdr.Signature = signature
 
-    return &zdr
+	return &zdr
 }
 
 // GenSignature generates the signature required for the
@@ -73,7 +73,7 @@ func FromOrder(order *internal.Order, endpointId, secretKey string) *ZotaDeposit
 //
 // Every request must be signed by the merchant in order to be
 // successfully authenticated by Zotapay servers.
-// 
+//
 // EndpointID + merchantOrderID + orderAmount + customerEmail + MerchantSecretKey
 func (zdr *ZotaDepositRequest) GenSignature(endpointId, secretKey string) string {
 	signatureStr := fmt.Sprintf(

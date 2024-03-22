@@ -23,8 +23,9 @@ func (u *User) PlaceOrder(amount float64) *Order {
 	orderId := uuid.New()
 
 	return &Order{
-		Id:     orderId,
-		Amount: amount,
-		User:   *u,
+		Id:            orderId,
+		Amount:        amount,
+		User:          *u,
+		PaymentStatus: PaymentStatusPending,
 	}
 }
