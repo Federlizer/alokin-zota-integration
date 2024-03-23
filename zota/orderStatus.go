@@ -71,9 +71,6 @@ func (zosb *ZotaOrderStatusRequest) GenSignature(merchantId, secretKey string) s
 
 	signature := fmt.Sprintf("%x", sha256.Sum256([]byte(signatureStr)))
 
-	fmt.Printf("String to sign: %s\n", signatureStr)
-	fmt.Printf("Signature: %s\n", signature)
-
 	return signature
 }
 

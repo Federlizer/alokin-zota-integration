@@ -1,7 +1,5 @@
 package internal
 
-import "github.com/google/uuid"
-
 type User struct {
 	Email     string
 	FirstName string
@@ -17,15 +15,4 @@ type UserAddress struct {
 	City        string
 	// state string
 	ZipCode string
-}
-
-func (u *User) PlaceOrder(amount float64) *Order {
-	orderId := uuid.New()
-
-	return &Order{
-		Id:            orderId,
-		Amount:        amount,
-		User:          *u,
-		PaymentStatus: PaymentStatusPending,
-	}
 }
