@@ -15,16 +15,16 @@ func main() {
 	zotaBaseUrl := os.Getenv("ZOTA_BASE_URL")
 
 	zotaApi := zota.NewZotaAPI(
-        zotaSecretKey,
-        zotaEndpointId,
-        zotaMerchantId,
-        zotaBaseUrl,
-    )
+		zotaSecretKey,
+		zotaEndpointId,
+		zotaMerchantId,
+		zotaBaseUrl,
+	)
 
 	orderRepo := storage.NewOrderRepo()
 
 	engine := api.SetupApi(zotaApi, *orderRepo)
-    err := engine.Run()
+	err := engine.Run()
 	if err != nil {
 		panic(err)
 	}

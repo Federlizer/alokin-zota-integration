@@ -13,14 +13,14 @@ import (
 )
 
 type IZotaAPI interface {
-    SecretKey() string
-    EndpointId() string
-    MerchantId() string
-    BaseUrl() string
+	SecretKey() string
+	EndpointId() string
+	MerchantId() string
+	BaseUrl() string
 
-    Deposit(request *ZotaDepositRequest) (*ZotaDepositResponse, error)
-    OrderStatus(request *ZotaOrderStatusRequest) (*ZotaOrderStatusResponse, error)
-    PollOrderStatus(request *ZotaOrderStatusRequest, order *internal.Order) (*ZotaOrderStatusResponse, error)
+	Deposit(request *ZotaDepositRequest) (*ZotaDepositResponse, error)
+	OrderStatus(request *ZotaOrderStatusRequest) (*ZotaOrderStatusResponse, error)
+	PollOrderStatus(request *ZotaOrderStatusRequest, order *internal.Order) (*ZotaOrderStatusResponse, error)
 }
 
 type ZotaAPI struct {
@@ -31,28 +31,28 @@ type ZotaAPI struct {
 }
 
 func NewZotaAPI(secretKey, endpointId, merchantId, baseUrl string) *ZotaAPI {
-    return &ZotaAPI {
-        secretKey,
-        endpointId,
-        merchantId,
-        baseUrl,
-    }
+	return &ZotaAPI{
+		secretKey,
+		endpointId,
+		merchantId,
+		baseUrl,
+	}
 }
 
 func (api *ZotaAPI) SecretKey() string {
-    return api.secretKey
+	return api.secretKey
 }
 
 func (api *ZotaAPI) EndpointId() string {
-    return api.endpointId
+	return api.endpointId
 }
 
 func (api *ZotaAPI) MerchantId() string {
-    return api.merchantId
+	return api.merchantId
 }
 
 func (api *ZotaAPI) BaseUrl() string {
-    return api.baseUrl
+	return api.baseUrl
 }
 
 func (api *ZotaAPI) Deposit(request *ZotaDepositRequest) (*ZotaDepositResponse, error) {
