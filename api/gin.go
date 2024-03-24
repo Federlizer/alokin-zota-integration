@@ -58,8 +58,8 @@ func getOrdersHandler(c *gin.Context) {
 }
 
 type OrderHandlerParams struct {
-	Description string  `json:"description" form:"description"`
-	Amount      float64 `json:"amount" form:"amount"`
+	Description string  `json:"description" form:"description" binding:"required,max=128"`
+	Amount      float64 `json:"amount" form:"amount" binding:"required"`
 }
 
 func orderHandler(c *gin.Context) {
