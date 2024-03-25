@@ -24,7 +24,8 @@ func main() {
 	orderRepo := storage.NewOrderRepo()
 
 	engine := api.SetupApi(zotaApi, *orderRepo)
-	err := engine.Run()
+	addr := ":8080"
+	err := engine.Run(addr)
 	if err != nil {
 		panic(err)
 	}

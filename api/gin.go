@@ -16,6 +16,11 @@ import (
 func SetupApi(zotaApi zota.IZotaAPI, orderRepo storage.OrderRepo) *gin.Engine {
 	engine := gin.Default()
 
+	// Don't trust any proxies:
+	// [GIN-debug] [WARNING] You trusted all proxies, this is NOT safe. We recommend you to set a value.
+	// Please check https://pkg.go.dev/github.com/gin-gonic/gin#readme-don-t-trust-all-proxies for details.
+	engine.SetTrustedProxies(nil)
+
 	corsConfig := cors.DefaultConfig()
 	corsConfig.AllowAllOrigins = true
 
