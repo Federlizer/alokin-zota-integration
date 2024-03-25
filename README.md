@@ -89,10 +89,10 @@ updated (i.e. if you call `GET /order` you should see the `paymentStatus` field 
 1. Get all current orders `GET /order` (should be empty at startup)
 2. Create a new order `POST /order` (you should get redirected 302 Found to Zota's payment page)
 3. Query all current orders `GET /order` (should include the new order we just created)
-3. Complete/Fail payment process (You'll get redirected to 404 NotFound URL - [Deposit redirectUrl caveat](#deposit-redirecturl))
-4. Requery all orders `GET /order` (should show the same order, but with a different `paymentStatus` field)
+4. Complete/Fail payment process (You'll get redirected to 404 NotFound URL - [Deposit redirectUrl caveat](#deposit-redirecturl))
+5. Requery all orders `GET /order` (should show the same order, but with a different `paymentStatus` field)
 
-Keep in mind that depending on the timing, the last step (step 4) might take up to 10 seconds to properly show the
+Keep in mind that depending on the timing, the last step (step 5) might take up to 10 seconds to properly show the
 updated `paymentStatus` field for the created order - this happens due to
 [Order Status flow implementation caveat](#order-status-flow-implementations).
 
